@@ -1,0 +1,14 @@
+#The dataset file in assets/grades.txt contains a line separated list of people with their grade in a class. 
+#Create a regex to generate a list of just those students who received a B in the course.
+
+import re
+def grades():
+    with open ("assets/grades.txt", "r") as file:
+        grades = file.read()
+        namesB=[]
+        for item in re.finditer("(?P<name>.*)(\: B)",grades):
+            namesB.append(item.group('name'))
+        return namesB
+print(grades())
+
+assert len(grades()) == 16
