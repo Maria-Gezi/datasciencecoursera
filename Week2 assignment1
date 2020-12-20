@@ -1,0 +1,27 @@
+def proportion_of_education():
+    # your code goes here
+    # YOUR CODE HERE
+    import pandas as pd
+    df = pd.read_csv('assets/NISPUF17.csv')
+    cont1=0
+    cont2=0
+    cont3=0
+    cont4=0
+    for num,values in df['EDUC1'].iteritems():
+        if(values==1):
+            cont1+=1
+        if(values==2):
+            cont2+=1
+        if(values==3):
+            cont3+=1
+        if(values==4):
+            cont4+=1
+    conttotal=len(df['EDUC1'])
+    prop= {"less than high school":cont1/conttotal,
+            "high school":cont2/conttotal,
+            "more than high school but not college":cont3/conttotal,
+            "college": cont3/conttotal}
+    return prop
+    raise NotImplementedError()
+       
+proportion_of_education()
