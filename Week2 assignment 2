@@ -1,0 +1,18 @@
+def average_influenza_doses():
+    # YOUR CODE HERE
+    import pandas as pd
+    df = pd.read_csv('assets/NISPUF17.csv')
+    df = df[['CBF_01','P_NUMFLU']]
+    df['P_NUMFLU'].isna().sum() #NAN values
+    df = df[df['P_NUMFLU'].notna()]
+    tot1=len(df[df['CBF_01']==1])
+    tot2=len(df[df['CBF_01']==2])
+
+    mi=df[df['CBF_01']==1]['P_NUMFLU'].sum()
+    notmi=df[df['CBF_01']==2]['P_NUMFLU'].sum()
+    
+    return (mi/tot1, notmi/tot2)
+    raise NotImplementedError()
+    
+    
+average_influenza_doses()
