@@ -1,0 +1,20 @@
+def chickenpox_by_sex():
+    # YOUR CODE HERE
+    import pandas as pd
+    df = pd.read_csv('assets/NISPUF17.csv')
+    df = df[df['P_NUMVRC']>=1]
+    a = df[df['HAD_CPOX']==1]
+    b = df[df['HAD_CPOX']==2]
+    
+    dict = {} 
+    m_inf=len(a[a['SEX']==1]) #male infected
+    m_notinf=len(b[b['SEX']==1]) #male not infected
+    f_inf=len(a[a['SEX']==2]) #female infected
+    f_notinf=len(b[b['SEX']==2]) #female not infected
+    
+    dict['male']=m_inf/m_notinf
+    dict['female']=f_inf/f_notinf
+    return dict
+    raise NotImplementedError()
+    
+chickenpox_by_sex()
